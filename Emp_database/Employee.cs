@@ -40,12 +40,12 @@ namespace Emp_database
             set { employeeId = value; }
         }
 
-        private string activationStatus;
+        private string activate;
 
-        public string ActivationStatus
+        public string Activate
         {
-            get { return activationStatus; }
-            set { activationStatus = value; }
+            get { return activate; }
+            set { activate = value; }
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿<Application x:Class="Emp_database.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Emp_database"
-             StartupUri="MainWindow.xaml">
+             StartupUri="LauncherWindow.xaml">
     <Application.Resources>
-         
+
     </Application.Resources>
 </Application>

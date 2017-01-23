@@ -24,13 +24,10 @@
                   SelectedItem="{Binding Path= SelectedEmployee,Mode=TwoWay}"
                   >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeId}" Width="80"/>
+                <DataGridTextColumn Header="Employee ID" Binding="{Binding ID}" Width="80"/>
                 <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="130" />
-
                 <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="130" />
                 <DataGridTextColumn Header="Email Id" Binding="{Binding Email}" Width="140" />
-
-                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="200" />
                 <DataGridTextColumn Header="Activation Status" Binding="{Binding Status}" Width="100"/>
             </DataGrid.Columns>
 
@@ -38,12 +35,8 @@
 
         <StackPanel Grid.Row="0" Orientation="Vertical" Grid.ColumnSpan="2" Margin="801,0,-80.333,0" >
             <Button x:Name="View_Employee" Content="View" HorizontalAlignment="Left" Command="{Binding Path=ViewEmployeeBtn}" Margin="55,80" VerticalAlignment="Top" Width="169" Height="47"/>
-
-
             <Button x:Name="Add_Employee" Content="Add" HorizontalAlignment="Left" Command="{Binding Path=AddEmployeeBtn}" Margin="55,80" VerticalAlignment="Top" Width="169" Height="47"/>
-
             <Button x:Name="Update_Employee" Content="Update" HorizontalAlignment="Left" Command="{Binding Path=UpdateEmployeeBtn}" Margin="55,-40" VerticalAlignment="Top" Width="169" Height="47"/>
-
             <Button x:Name="Delete_Employee" Content="Delete" HorizontalAlignment="Left" Command="{Binding Path=DeleteEmployeeBtn}" Margin="55,40" VerticalAlignment="Top" Width="169" Height="47"/>
             <Button x:Name="Cancel" Content="Exit" HorizontalAlignment="Left"  Margin="55,40" VerticalAlignment="Top" Width="169" Height="47" Click="Cancel_Click"/>
 

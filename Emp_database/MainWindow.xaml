@@ -32,26 +32,26 @@
                         <StackPanel>
                             <TextBlock Style="{StaticResource tbkStyle}">
                                 <TextBlock.Inlines>
-                                    <Run Text="Name : "></Run>
-                                    <Run Text="{Binding name}"></Run>
+                                    <Run Text="FirstName : "></Run>
+                                    <Run Text="{Binding FirstName}"></Run>
+                                </TextBlock.Inlines>
+                            </TextBlock>
+                            <TextBlock Style="{StaticResource tbkStyle}">
+                                <TextBlock.Inlines>
+                                    <Run Text="LastName : "></Run>
+                                    <Run Text="{Binding LastName}"></Run>
                                 </TextBlock.Inlines>
                             </TextBlock>
                             <TextBlock Style="{StaticResource tbkStyle}">
                                 <TextBlock.Inlines>
                                     <Run Text="ID : "></Run>
-                                    <Run Text="{Binding id}"></Run>
+                                    <Run Text="{Binding ID}"></Run>
                                 </TextBlock.Inlines>
                             </TextBlock>
                             <TextBlock Style="{StaticResource tbkStyle}">
                                 <TextBlock.Inlines>
-                                    <Run Text="Gender : "></Run>
-                                    <Run Text="{Binding gender}"></Run>
-                                </TextBlock.Inlines>
-                            </TextBlock>
-                            <TextBlock Style="{StaticResource tbkStyle}">
-                                <TextBlock.Inlines>
-                                    <Run Text="Age : "></Run>
-                                    <Run Text="{Binding age}"></Run>
+                                    <Run Text="Email : "></Run>
+                                    <Run Text="{Binding Email}"></Run>
                                     <LineBreak/>
                                 </TextBlock.Inlines>
                             </TextBlock>
@@ -68,20 +68,20 @@
             <StackPanel Grid.Row="0" Margin="10,0,0,0">
                 <TextBlock Text="Add or Update a employee" FontSize="20" FontWeight="ExtraBold"></TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                    <TextBlock Text="Name" Width="75"></TextBlock>
-                    <TextBox x:Name="txtEmployeeName" Margin="10,0,0,0" Width="200"></TextBox>
+                    <TextBlock Text="FirstName" Width="75"></TextBlock>
+                    <TextBox x:Name="txtEmployeeFName" Margin="10,0,0,0" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Text="LastName" Width="75"></TextBlock>
+                    <TextBox x:Name="txtEmployeeLName" Margin="10,0,0,0" Width="200"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <TextBlock Text="Employee ID" Width="75"></TextBlock>
                     <TextBox x:Name="txtEmployeeID" Margin="10,0,0,0" Width="200"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                    <TextBlock Text="Gender" Width="75"></TextBlock>
-                    <ComboBox x:Name="cbxGender" Margin="10,0,0,0" Width="200" Text="--Select a Gender--" IsReadOnly="True" IsEditable="True"></ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                    <TextBlock Text="Age" Width="75"></TextBlock>
-                    <TextBox x:Name="txtAge" InputScope="Number" Margin="10,0,0,0" Width="200"></TextBox>
+                    <TextBlock Text="Email" Width="75"></TextBlock>
+                    <TextBox x:Name="txtEmail" Margin="10,0,0,0" Width="200"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Button x:Name="btnNewEmployee" Template="{StaticResource btnTemplate}" Content=" Add New Employee" Margin="0,0,10,0" Click="btnNewEmployee_Click"></Button>
@@ -97,20 +97,20 @@
 
                 <StackPanel x:Name="employeeDetailsPanel" Margin="10,0,0,0" Visibility="Collapsed">
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                        <TextBlock Text="Name :" Width="75"></TextBlock>
-                        <TextBlock x:Name="txbEmployeeName" Text="{Binding name}" Margin="10,0,0,0" Width="200"></TextBlock>
+                        <TextBlock Text="FirstName :" Width="75"></TextBlock>
+                        <TextBlock x:Name="txbEmployeeFName" Text="{Binding name}" Margin="10,0,0,0" Width="200"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="LastName :" Width="75"></TextBlock>
+                        <TextBlock x:Name="txbEmployeeLName" Text="{Binding name}" Margin="10,0,0,0" Width="200"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <TextBlock Text="Employee ID : " Width="75"></TextBlock>
                         <TextBlock x:Name="txbEmployeeID" Margin="10,0,0,0" Text="{Binding id}" Width="200"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                        <TextBlock Text="Gender : " Width="75"></TextBlock>
-                        <TextBlock x:Name="txbGender" Margin="10,0,0,0" Text="{Binding gender}" Width="200"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                        <TextBlock Text="Age : " Width="75"></TextBlock>
-                        <TextBlock x:Name="txbAge" InputScope="Number" Margin="10,0,0,0" Width="200" Text="{Binding age}"></TextBlock>
+                        <TextBlock Text="Email : " Width="75"></TextBlock>
+                        <TextBlock x:Name="txbEmail" InputScope="Number" Margin="10,0,0,0" Width="200" Text="{Binding age}"></TextBlock>
                     </StackPanel>
                 </StackPanel>
 
