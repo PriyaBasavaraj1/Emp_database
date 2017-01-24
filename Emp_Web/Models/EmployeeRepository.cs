@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Emp_database;
+using System.Web.Http;
 
 namespace Emp_Web.Models
 {
@@ -25,6 +26,7 @@ namespace Emp_Web.Models
             return (from s in connection.Emp_dbs where s.ID == id select s).FirstOrDefault();
         }
 
+        [HttpPost]
         public bool Add(Emp_db employee)
         {
             connection.Emp_dbs.InsertOnSubmit(employee);

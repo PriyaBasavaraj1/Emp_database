@@ -33,7 +33,7 @@ namespace Emp_Web.Controllers
             }
         }
 
-
+        [HttpPost]
         public HttpResponseMessage PostEmployee(Emp_db employee)
         {
             if (String.IsNullOrEmpty(employee.FirstName))

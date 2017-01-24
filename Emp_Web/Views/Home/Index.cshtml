@@ -1,4 +1,5 @@
-﻿<script src="~/Scripts/jquery-1.7.1.js"></script>
+﻿<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.intellisense.js"></script> 
 <script type="text/javascript">
     $(document).ready(function () {
         jQuery.support.cors = true;
@@ -15,11 +16,11 @@
         
         });
 
-        //Displays an Employee Details
+        //Displays an Employee Detail
         function WriteResponses(employees) {
-            var strResult = "<table class=\"table\"><thead class=\"thead-inverse\"><th>Employee ID</th><th>First Name</th><th>Last Name</th><th>Email</th></thead>";
+            var strResult = "<table class=\"table\"><thead class=\"thead-inverse\"><th>Employee ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Status</th></thead>";
             $.each(employees, function (index, employee) {
-                strResult += "<tr><td>" + employee.ID + "</td><td> " + employee.FirstName + "</td><td>" + employee.LastName + "</td><td>" + employee.Email + "</td></tr>";
+                strResult += "<tr><td>" + employee.ID + "</td><td> " + employee.FirstName + "</td><td>" + employee.LastName + "</td><td>" + employee.Email + "</td><td>" + employee.Status + "</td></tr>";
             });
             strResult += "</table>";
             $("#divResult").html(strResult);
@@ -42,16 +43,15 @@
         });
 
         function WriteResponse(employee) {
-            document.getElementById('ID').innerHTML = "<h4>" + employee.ID + "</h4>";
             document.getElementById('FirstName').innerHTML = "<h4>" + employee.FirstName + "</h4>";
             document.getElementById('LastName').innerHTML = "<h4>" + employee.LastName + "</h4>";
             document.getElementById('Email').innerHTML = "<h4>" + employee.Email + "</h4>";
+            document.getElementById('Status').innerHTML = "<h4>" + employee.Status + "<h4>";
         }
     }
 
     //Adds Employee to list
     function AddEmployee() {
-    $("#PostEmployee").click(function () {
             var employee = {
                 ID: document.getElementById('newEmployeeId').value,
                 FirstName: document.getElementById('newEmployeeFirstName').value,
@@ -73,7 +73,6 @@
                     alert('Employee not Added');
                 }
             });
-        });
     }
     
 
@@ -83,7 +82,7 @@
             ID: document.getElementById('updateEmployeeId').value,
             FirstName: document.getElementById('updateEmployeeFirstName').value,
             LastName: document.getElementById('updateEmployeeLastName').value,
-            Email: document.getElementById('updateEmployeeEmail').value
+            //Email: document.getElementById('updateEmployeeEmail').value
         };
 
         $.ajax({
@@ -117,9 +116,9 @@
 
         //Displays in a Table
         function WriteResponses(employees) {
-            var strResult = "<table><th>Employee ID</th><th>First Name</th><th>Last Name</th><th>Email</th>";
+            var strResult = "<table><th>Employee ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Status</th>";
             $.each(employees, function (index, employee) {
-                strResult += "<tr><td>" + employee.ID + "</td><td> " + employee.FirstName + "</td><td>" + employee.LastName + "</td><td>" + employee.Email + "</td></tr>";
+                strResult += "<tr><td>" + employee.ID + "</td><td> " + employee.FirstName + "</td><td>" + employee.LastName + "</td><td>" + employee.Email + "</td><td>" + employee.Status + "</td></tr>";
             });
             strResult += "</table>";
             $("#divResult").html(strResult);
@@ -128,11 +127,15 @@
 
 </script>
 
-  
+
 <center>
     <h1 style="margin-top:20px;color:darkgoldenrod;font-family:'Times New Roman';font-weight:bold">Employee Database </h1>
 </center>
 <div id="divResult" style="margin-left: 15px"></div>
+<center>
+    <h2 style="margin-top:10px;color:brown;font-family:Constantia;">List of Employees </h2>
+</center>
+<div id="divResult" style="margin-left: 15px"></div>  
 <div>
     <centre>
         <table>
@@ -158,7 +161,11 @@
                             <label for="email">Email:</label>
                             <input id="newEmployeeEmail" type="text" />
                         </div>
-                        <button id="PostEmployee" class="btn btn-primary" onclick="AddEmployee()">Add New Employee</button>
+                        <div class="form-group">
+                            <label for="Status">Status:</label>
+                            <input id="newEmployeeStatus" type="text" />
+                        </div>
+                        <button id="btnAdd" class="btn btn-primary" onclick="AddEmployee()">Add New Employee</button>
                     </form>
                 </td>
                 <td style="margin-left:50px">
@@ -181,12 +188,7 @@
                             <input id="updateEmployeeLastName" type="text" />
                         </div>
 
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input id="updateEmployeeEmail" type="text" />
-                        </div>
-
-                        <button id="PutEmployee" class="btn btn-primary" onclick="PutEmployee()">Update Employee</button>
+                        <button id="btnEdit" class="btn btn-primary" onclick="PutEmployee()">Update Employee</button>
                     </form>
                 </td>
                 <td>
@@ -198,27 +200,19 @@
                         </center>
                         <h4>Enter the employee ID:</h4>
                         <input id="ID" type="text" />
-                        <button id="GetEmployee" class="btn btn-primary" onclick="GetEmployee()">Get Employee</button>
+                        <button id="btnGet" class="btn btn-primary" onclick="GetEmployee()">Get Employee</button>
                     </div>
                     <form style="margin-left:50px">
                         <div style="margin-left: 20px">
                             <table>
-                                <tr>
-                                    <td><h4>ID</h4></td>
-                                    <td><span id="ID"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><h4>First Name</h4></td>
-                                    <td><span id="FirstName"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><h4>Last Name</h4> </td>
-                                    <td><span id="LastName"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><h4>Email</h4></td>
-                                    <td><span id="Email"></span></td>
-                                </tr>
+                                <tr><td><h4>First Name</h4></td>
+                                    <td><span id="FirstName"></span></td></tr>
+                                <tr><td><h4>Last Name</h4> </td>
+                                    <td><span id="LastName"></span></td></tr>
+                                <tr><td><h4>Email</h4></td>
+                                    <td><span id="Email"></span></td></tr>
+                                <tr><td><h4>Status</h4></td>
+                                    <td><span id="Status"></span></td></tr>
                             </table>
                         </div>
                     </form>
@@ -228,7 +222,3 @@
         </table>
     </centre>
 </div>
-<center>
-    <h2 style="margin-top:20px;color:brown;font-family:Constantia;">List of employees </h2>
-</center>
-<div id="divResult" style="margin-left: 15px"></div>
