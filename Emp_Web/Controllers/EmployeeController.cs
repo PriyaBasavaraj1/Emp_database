@@ -5,13 +5,17 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Emp_Web.Models;
-using Emp_database;
 
 namespace Emp_Web.Controllers
 {
     public class EmployeeController : ApiController
     {
         static readonly IEmployeeRepository employeeRepository = new EmployeeRepository();
+
+        public EmployeeController()
+        {
+
+        }
 
         public HttpResponseMessage GetAllEmployees()
         {
@@ -33,30 +37,28 @@ namespace Emp_Web.Controllers
             }
         }
 
-        [HttpPost]
+
         public HttpResponseMessage PostEmployee(Emp_db employee)
         {
-            if (String.IsNullOrEmpty(employee.FirstName))
+            Verifier obj = new Verifier();
+            if (obj.InsertEmployee(employee) == 0)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Please fill all the details");
 
             }
-            bool result = employeeRepository.Add(employee);
-            if (result)
-            {
-                var response = Request.CreateResponse<Emp_db>(HttpStatusCode.Created, employee);
-                string uri = Url.Link("DefaultApi", new { id = employee.ID });
-                response.Headers.Location = new Uri(uri);
-                return response;
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "");
-            }
+
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         public HttpResponseMessage PutEmployee(Emp_db employee)
         {
+            DataClasses1DataContext connection = new DataClasses1DataContext();
+            Emp_db obj = (from s in connection.Emp_dbs where s.ID == employee.ID select s).FirstOrDefault();
+            employee.Email = obj.Email;
+            Verifier obj1 = new Verifier();
+
+            if (obj1.UpdateEmployee(employee) == 0)
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Unable to Update the Employee for the Given ID");
 
             if (!employeeRepository.Update(employee))
             {
@@ -67,18 +69,7 @@ namespace Emp_Web.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
         }
-        public HttpResponseMessage PutEmployee(string id, Emp_db employee)
-        {
-            employee.ID = id;
-            if (!employeeRepository.Update(employee))
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Unable to Update the Employee for the Given ID");
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.OK);
-            }
-        }
+
 
         public HttpResponseMessage DeleteProduct(string id)
         {

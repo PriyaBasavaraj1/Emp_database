@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Emp_database;
-using System.Web.Http;
+
 
 namespace Emp_Web.Models
 {
@@ -12,7 +10,8 @@ namespace Emp_Web.Models
         private List<Emp_db> employees;
         DataClasses1DataContext connection = new DataClasses1DataContext();
         public EmployeeRepository()
-        { }
+        {
+        }
 
         public IEnumerable<Emp_db> GetAll()
         {
@@ -26,7 +25,6 @@ namespace Emp_Web.Models
             return (from s in connection.Emp_dbs where s.ID == id select s).FirstOrDefault();
         }
 
-        [HttpPost]
         public bool Add(Emp_db employee)
         {
             connection.Emp_dbs.InsertOnSubmit(employee);
@@ -39,7 +37,7 @@ namespace Emp_Web.Models
             Emp_db employee = (from s in connection.Emp_dbs where s.ID == id select s).FirstOrDefault();
             if (employee.Status == "Activated")
                 throw new Exception("Only deactivated Employees can be deleted");
-            connection.Emp_dbs.DeleteOnSubmit((from s in connection.Emp_dbs where s.ID == id select s).FirstOrDefault());
+            connection.Emp_dbs.DeleteOnSubmit(employee);
             connection.SubmitChanges();
         }
 
@@ -47,15 +45,14 @@ namespace Emp_Web.Models
         {
             if (employee == null)
             {
-                throw new ArgumentNullException("employee");
+                throw new ArgumentNullException("Unable to update the details of employee");
             }
             Emp_db s = (from t in connection.Emp_dbs
-                             where t.ID == employee.ID
-                             select t).FirstOrDefault();
+                        where t.ID == employee.ID
+                        select t).FirstOrDefault();
             s.FirstName = employee.FirstName;
             s.LastName = employee.LastName;
             s.Status = employee.Status;
-
             connection.SubmitChanges();
             return true;
         }
