@@ -37,7 +37,7 @@ namespace Emp_Web.Models
         public void Remove(string id)
         {
             Emp_db employee = (from s in connection.Emp_dbs where s.ID == id select s).FirstOrDefault();
-            if (employee.Status == "Activated")
+            if (employee.Status.Trim() == "Activated")
                 throw new Exception("Only deactivated Employees can be deleted");
             connection.Emp_dbs.DeleteOnSubmit(employee);
             connection.SubmitChanges();

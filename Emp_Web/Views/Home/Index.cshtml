@@ -46,7 +46,7 @@
             document.getElementById('FirstName').innerHTML = "<input name=\"Firstname\" id=\"updateEmployeeName\" value=" + employee.FirstName + " />";
             document.getElementById('LastName').innerHTML = "<input name=\"Lastname\" id=\"updateEmployeeLastName\" value=" + employee.LastName + " />";
             document.getElementById('Email').innerHTML = "<h4>" + employee.Email + "</h4>";
-            document.getElementById('Status').innerHTML = "<input name=\"Lastname\" id=\"updateEmployeeStatus\" value=" + employee.Status + " />";
+            document.getElementById('Status').innerHTML = "<input name=\"Status\" id=\"updateEmployeeStatus\" value=" + employee.Status + " />";
         }
     }
 
@@ -78,7 +78,7 @@
     //Put Employee
     function PutEmployee() {
         var employee = {
-            EmployeeId: document.getElementById('empId').value,
+            ID: document.getElementById('empId').value,
             FirstName: document.getElementById('updateEmployeeName').value,
             LastName: document.getElementById('updateEmployeeLastName').value,
             Status: document.getElementById('updateEmployeeStatus').value,
@@ -104,7 +104,7 @@
     function DeleteEmployee() {
         jQuery.support.cors = true;
         var employee = {
-            EmployeeId: document.getElementById('empId').value
+            ID: document.getElementById('empId').value
         };
         $.ajax({
             url: 'http://localhost:1428/api/employee/' + document.getElementById('empId').value,
@@ -117,7 +117,7 @@
 
             },
             error: function () {
-                alert('Unable to Delete the Specified Employee!');
+                alert('Activated Employee cannot be Deleted!');
 
             }
 
@@ -197,27 +197,28 @@
                                 <input id="newEmployeeEmail" type="text" />
                             </td>
                         </tr>
-                        <tr>
+                        @*<tr>
                             <td>
                                 <label for="Status">Status:</label>
                             </td>
                             <td>
                                 <input id="newEmployeeStatus" type="text" />
                             </td>
-                        </tr>
-                        @*<tr><td>
-                                 <div class="dropdown"/>
-                                    <label for="Status">Status :</label>
-                                    <div id="newEmployeeStatus" type="text"/>
-                                        <td>
-                                        <select>
-                                            <option value="Activated">Activated</option>
-                                            <option value="Deactivated">Deactivated</option>
-                                        </select>
+                        </tr>*@
+                        <tr>
+                            <td>
+                                <label for="Status">Status :</label>
+                                <td>
+                                <select id="newEmployeeStatus" onchange="getValue(this.value)">
+                                    <option value="$">--Please Select--</option>
+                                    <option value="Activated">Activated</option>
+                                    <option value="Deactivated">Deactivated</option>
+                                </select>
                                     </td>
-                            </td></tr>*@
+                            </td>
+                        </tr>
                     </table>
-                    <button id="postEmployee" class="btn btn-primary" onclick="AddEmployee()">Add New Employee</button>
+              <button id="postEmployee" class="btn btn-primary" onclick="AddEmployee()">Add New Employee</button>
     </center>
 </div>
 
@@ -263,7 +264,8 @@
                         <h4>Status :</h4>
                     </td>
                     <td>
-                        <select>
+                        <select id="update" onchange="getValue(this.value)">
+                            <option value="$">Change Status</option>/>
                             <option value="Activated">Activated</option>
                             <option value="Deactivated">Deactivated</option>
                         </select>
@@ -278,4 +280,3 @@
         <button style="margin-left:10px;" id="DeleteEmployee" class="btn btn-primary" onclick="DeleteEmployee()">Delete Employee</button>
     </div>
 </centre>
-
