@@ -156,56 +156,56 @@
     <h2 style="margin-top:20px;color:brown;font-family:Constantia;">List of Employees </h2>
 </center>
 <div id="divResult" style="margin-left: 15px"></div>
-    <div>
-        <center>
-            <table>
-                <tr>
-                    <td>
-                        <center>
-                            <h2 style="margin-top:20px;color:brown;font-family:Constantia;">Add Employee </h2>
-                        </center>
-                        <table class="table">
-                            <tr>
-                                <td>
-                                    <label for="ID">Employee ID</label>
-                                </td>
-                                <td>
-                                    <input id="EmpId" type="text" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="name">First Name</label>
-                                </td>
-                                <td>
-                                    <input id="newEmployeeName" type="text" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="name"> Last Name</label>
-                                </td>
-                                <td>
-                                    <input id="newEmployeeLastName" type="text" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="email">Email:</label>
-                                </td>
-                                <td>
-                                    <input id="newEmployeeEmail" type="text" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="Status">Status:</label>
-                                </td>
-                                <td>
-                                    <input id="newEmployeeStatus" type="text" />
-                                </td>
-                            </tr>
-                            @*<tr><td>
+<div>
+    <center>
+        <table>
+            <tr>
+                <td>
+                    <center>
+                        <h2 style="margin-top:20px;color:brown;font-family:Constantia;">Add Employee </h2>
+                    </center>
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <label for="ID">Employee ID</label>
+                            </td>
+                            <td>
+                                <input id="EmpId" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="name">First Name</label>
+                            </td>
+                            <td>
+                                <input id="newEmployeeName" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="name"> Last Name</label>
+                            </td>
+                            <td>
+                                <input id="newEmployeeLastName" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="email">Email:</label>
+                            </td>
+                            <td>
+                                <input id="newEmployeeEmail" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="Status">Status:</label>
+                            </td>
+                            <td>
+                                <input id="newEmployeeStatus" type="text" />
+                            </td>
+                        </tr>
+                        @*<tr><td>
                                  <div class="dropdown"/>
                                     <label for="Status">Status :</label>
                                     <div id="newEmployeeStatus" type="text"/>
@@ -216,49 +216,49 @@
                                         </select>
                                     </td>
                             </td></tr>*@
-                        </table>
-                        <button id="postEmployee" class="btn btn-primary" onclick="AddEmployee()">Add New Employee</button>
-        </center>
-    </div>
-
-    <div>
-        <center> <h2 style="margin-top:20px;color:brown;font-family:Constantia;">Modify Employee Details</h2></center>
-    </div>
-    <h3 style="margin-left:250px">Enter the employee ID:</h3>
-    <center>
-        <div>
-            <input type="text" id="empId" value="" />
-            <button id="GetEmployee" class="btn btn-primary" onclick="GetEmployee()">Get Employee</button>
-        </div>
+                    </table>
+                    <button id="postEmployee" class="btn btn-primary" onclick="AddEmployee()">Add New Employee</button>
     </center>
-    <center>
-        <div style="margin-left: 60px">
-            <table class="table" style="width:800px">
-                <tr>
-                    <td>
-                        <h4>First Name</h4>
-                    </td>
-                    <td><span id="FirstName"></span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <h4>Last Name</h4>
-                    </td>
-                    <td><span id="LastName"></span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <h4>Email</h4>
-                    </td>
-                    <td><span id="Email"></span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <h4>Status</h4>
-                    </td>
-                    <td><span id="Status"></span></td>
-                </tr>
-                @*<tr>
+</div>
+
+<div>
+    <center> <h2 style="margin-top:20px;color:brown;font-family:Constantia;">Modify Employee Details</h2></center>
+</div>
+<h3 style="margin-left:250px">Enter the employee ID:</h3>
+<center>
+    <div>
+        <input type="text" id="empId" value="" />
+        <button id="GetEmployee" class="btn btn-primary" onclick="GetEmployee()">Get Employee</button>
+    </div>
+</center>
+<center>
+    <div style="margin-left: 60px">
+        <table class="table" style="width:800px">
+            <tr>
+                <td>
+                    <h4>First Name</h4>
+                </td>
+                <td><span id="FirstName"></span></td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>Last Name</h4>
+                </td>
+                <td><span id="LastName"></span></td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>Email</h4>
+                </td>
+                <td><span id="Email"></span></td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>Status</h4>
+                </td>
+                <td><span id="Status"></span></td>
+            </tr>
+            @*<tr>
                     <td>
                         <h4>Status :</h4>
                     </td>
@@ -269,9 +269,9 @@
                         </select>
                     </td>
                 </tr>*@
-            </table>
-        </div>
-    </center>
+        </table>
+    </div>
+</center>
 <centre>
     <div>
         <button style="margin-left:10px;" id="putEmployee" class="btn btn-primary" onclick="PutEmployee()">Update Employee</button>

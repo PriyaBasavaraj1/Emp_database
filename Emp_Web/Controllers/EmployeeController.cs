@@ -17,13 +17,13 @@ namespace Emp_Web.Controllers
 
         }
 
-        public HttpResponseMessage GetAllEmployees()
+        public HttpResponseMessage GetAll()
         {
             List<Emp_db> empList = employeeRepository.GetAll().ToList();
             return Request.CreateResponse<List<Emp_db>>(HttpStatusCode.OK, empList);
         }
 
-        public HttpResponseMessage GetEmplopyee(string id)
+        public HttpResponseMessage Get(string id)
         {
             Emp_db employee = employeeRepository.Get(id);
             if (employee == null)
@@ -38,7 +38,7 @@ namespace Emp_Web.Controllers
         }
 
 
-        public HttpResponseMessage PostEmployee(Emp_db employee)
+        public HttpResponseMessage Post(Emp_db employee)
         {
             Verifier obj = new Verifier();
             if (obj.InsertEmployee(employee) == 0)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 
 
 namespace Emp_Web.Models
@@ -27,8 +28,9 @@ namespace Emp_Web.Models
 
         public bool Add(Emp_db employee)
         {
-            connection.Emp_dbs.InsertOnSubmit(employee);
-            connection.SubmitChanges();
+            DataClasses1DataContext con = new DataClasses1DataContext();
+            con.Emp_dbs.InsertOnSubmit(employee);
+            con.SubmitChanges();
             return true;
         }
 
@@ -56,5 +58,7 @@ namespace Emp_Web.Models
             connection.SubmitChanges();
             return true;
         }
+
+
     }
 }
