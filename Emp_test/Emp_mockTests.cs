@@ -112,5 +112,101 @@ namespace Emp_test
                 Assert.AreEqual("Invalid Email Id", e.Message);
             }
         }
+
+        [TestMethod]
+        public void Put_withEmptyEmail_ThrowsException()
+        {
+            Emp_db obj1 = new Emp_db();
+            obj1.ID = "1";
+            obj1.FirstName = "Priya";
+            obj1.LastName = "B";
+            obj1.Email = "";
+            obj1.Status = "Activated";
+            var mockEmployeeRepository = MockRepository.GenerateMock<IEmployeeRepository>();
+            mockEmployeeRepository.Expect(x => x.Update(obj1)).Return(true);
+
+            Verifier mockEmpCrtl = new Verifier(mockEmployeeRepository);
+            try
+            {
+                mockEmpCrtl.UpdateEmployee(obj1);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Email id cannot be empty \n", e.Message);
+            }
+
+        }
+
+        [TestMethod]
+        public void Put_withEmptyLastName_ThrowsException()
+        {
+            Emp_db obj1 = new Emp_db();
+            obj1.ID = "1";
+            obj1.FirstName = "Priya";
+            obj1.LastName = "";
+            obj1.Email = "priya@gmail.com";
+            obj1.Status = "Activated";
+            var mockEmployeeRepository = MockRepository.GenerateMock<IEmployeeRepository>();
+            mockEmployeeRepository.Expect(x => x.Update(obj1)).Return(true);
+
+            Verifier mockEmpCrtl = new Verifier(mockEmployeeRepository);
+            try
+            {
+                mockEmpCrtl.UpdateEmployee(obj1);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Last Name cannot be empty \n", e.Message);
+            }
+
+        }
+
+        [TestMethod]
+        public void Put_withEmptyFirstName_ThrowsException()
+        {
+            Emp_db obj1 = new Emp_db();
+            obj1.ID = "1";
+            obj1.FirstName = "";
+            obj1.LastName = "B";
+            obj1.Email = "priya@gmail.com";
+            obj1.Status = "Activated";
+            var mockEmployeeRepository = MockRepository.GenerateMock<IEmployeeRepository>();
+            mockEmployeeRepository.Expect(x => x.Update(obj1)).Return(true);
+
+            Verifier mockEmpCrtl = new Verifier(mockEmployeeRepository);
+            try
+            {
+                mockEmpCrtl.UpdateEmployee(obj1);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("First Name cannot be empty \n", e.Message);
+            }
+
+        }
+        [TestMethod]
+        public void Put_withInavlidEmail_ThrowsException()
+        {
+            Emp_db obj1 = new Emp_db();
+            obj1.ID = "1";
+            obj1.FirstName = "Priya";
+            obj1.LastName = "B";
+            obj1.Email = "priya";
+            obj1.Status = "Activated";
+            var mockEmployeeRepository = MockRepository.GenerateMock<IEmployeeRepository>();
+            mockEmployeeRepository.Expect(x => x.Update(obj1)).Return(true);
+
+            Verifier mockEmpCrtl = new Verifier(mockEmployeeRepository);
+            try
+            {
+                mockEmpCrtl.UpdateEmployee(obj1);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Invalid Email Id", e.Message);
+            }
+
+        }
     }
 }
+    
