@@ -184,6 +184,7 @@ namespace Emp_test
             }
 
         }
+
         [TestMethod]
         public void Put_withInavlidEmail_ThrowsException()
         {
@@ -204,6 +205,42 @@ namespace Emp_test
             catch (Exception e)
             {
                 Assert.AreEqual("Invalid Email Id", e.Message);
+            }
+
+        }
+
+        [TestMethod]
+        public void Delete_withActivatedEmployee_ThrowsException()
+        {
+            Emp_db obj1 = new Emp_db();
+            obj1.ID = "1";
+            obj1.FirstName = "Priya";
+            obj1.LastName = "B";
+            obj1.Email = "priya@gmail.com";
+            obj1.Status = "Activated";
+            var mockEmployeeRepository = MockRepository.GenerateMock<IEmployeeRepository>();
+            try
+            { 
+                mockEmployeeRepository.Expect(x => x.Remove(obj1.ID));
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Only deactivated Employees can be deleted", e.Message);
+            }
+
+        }
+
+        [TestMethod]
+        public void Delete_withInvalidId_ThrowsException()
+        {
+            var mockEmployeeRepository = MockRepository.GenerateMock<IEmployeeRepository>();
+            try
+            {
+                mockEmployeeRepository.Expect(x => x.Remove("123"));
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Only deactivated Employees can be deleted", e.Message);
             }
 
         }
