@@ -31,7 +31,7 @@
     function GetEmployee() {
         jQuery.support.cors = true;
         $.ajax({
-            url: 'http://localhost:1428/api/employee/' + $('#EmpId').val(),
+            url: 'http://localhost:1428/api/employee/' + $('#empId').val(),
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -46,10 +46,9 @@
             document.getElementById('FirstName').innerHTML = "<input name=\"Firstname\" id=\"updateEmployeeName\" value=" + employee.FirstName + " />";
             document.getElementById('LastName').innerHTML = "<input name=\"Lastname\" id=\"updateEmployeeLastName\" value=" + employee.LastName + " />";
             document.getElementById('Email').innerHTML = "<h4>" + employee.Email + "</h4>";
-            document.getElementById('Status').innerHTML = "<input name=\"Status\" id=\"updateEmployeeStatus\" value=" + employee.Status + " />";
+            document.getElementById('Status').innerHTML = "<input name=\"Lastname\" id=\"updateEmployeeStatus\" value=" + employee.Status + " />";
         }
     }
-
 
     //Post Employee
     function AddEmployee() {
@@ -79,14 +78,15 @@
     //Put Employee
     function PutEmployee() {
         var employee = {
-            EmployeeId: document.getElementById('EmpId').value,
+            EmployeeId: document.getElementById('empId').value,
             FirstName: document.getElementById('updateEmployeeName').value,
             LastName: document.getElementById('updateEmployeeLastName').value,
-            Status: document.getElementById('updateEmployeeStatus').value
+            Status: document.getElementById('updateEmployeeStatus').value,
+            Email: document.getElementById('Email').value
         };
 
         $.ajax({
-            url: 'http://localhost:8088/api/employee/' + document.getElementById('EmpId').value,
+            url: 'http://localhost:1428/api/employee/' + document.getElementById('EmpId').value,
             type: 'PUT',
             data: JSON.stringify(employee),
             contentType: "application/json;charset=utf-8",
@@ -97,6 +97,30 @@
             error: function () {
                 alert('Details of Given ID not Updated !');
             }
+        });
+    }
+
+    //Delete Employee
+    function DeleteEmployee() {
+        jQuery.support.cors = true;
+        var employee = {
+            EmployeeId: document.getElementById('empId').value
+        };
+        $.ajax({
+            url: 'http://localhost:1428/api/employee/' + document.getElementById('empId').value,
+            type: 'DELETE',
+            data: JSON.stringify(employee),
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                alert('Successfully deleted');
+                GetAllEmployees();
+
+            },
+            error: function () {
+                alert('Unable to Delete the Specified Employee!');
+
+            }
+
         });
     }
 
@@ -146,7 +170,7 @@
                                     <label for="ID">Employee ID</label>
                                 </td>
                                 <td>
-                                    <input id="ID" type="text" />
+                                    <input id="EmpId" type="text" />
                                 </td>
                             </tr>
                             <tr>
@@ -176,29 +200,35 @@
                             <tr>
                                 <td>
                                     <label for="Status">Status:</label>
-
                                 </td>
                                 <td>
                                     <input id="newEmployeeStatus" type="text" />
                                 </td>
                             </tr>
+                            @*<tr><td>
+                                 <div class="dropdown"/>
+                                    <label for="Status">Status :</label>
+                                    <div id="newEmployeeStatus" type="text"/>
+                                        <td>
+                                        <select>
+                                            <option value="Activated">Activated</option>
+                                            <option value="Deactivated">Deactivated</option>
+                                        </select>
+                                    </td>
+                            </td></tr>*@
                         </table>
                         <button id="postEmployee" class="btn btn-primary" onclick="AddEmployee()">Add New Employee</button>
-                    </td>
-                </tr>
-            </table>
         </center>
     </div>
 
     <div>
-        <center> <h2 style="margin-top:20px;color:brown;font-family:Constantia;">Get Employee Details</h2></center>
+        <center> <h2 style="margin-top:20px;color:brown;font-family:Constantia;">Modify Employee Details</h2></center>
     </div>
     <h3 style="margin-left:250px">Enter the employee ID:</h3>
     <center>
         <div>
-            <input id="EmpId" type="text" value="" />
+            <input type="text" id="empId" value="" />
             <button id="GetEmployee" class="btn btn-primary" onclick="GetEmployee()">Get Employee</button>
-            <button style="margin-left:10px;" id="putEmployee" class="btn btn-primary" onclick="PutEmployee()">Update Employee</button>
         </div>
     </center>
     <center>
@@ -228,7 +258,24 @@
                     </td>
                     <td><span id="Status"></span></td>
                 </tr>
+                @*<tr>
+                    <td>
+                        <h4>Status :</h4>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="Activated">Activated</option>
+                            <option value="Deactivated">Deactivated</option>
+                        </select>
+                    </td>
+                </tr>*@
             </table>
         </div>
     </center>
+<centre>
+    <div>
+        <button style="margin-left:10px;" id="putEmployee" class="btn btn-primary" onclick="PutEmployee()">Update Employee</button>
+        <button style="margin-left:10px;" id="DeleteEmployee" class="btn btn-primary" onclick="DeleteEmployee()">Delete Employee</button>
+    </div>
+</centre>
 

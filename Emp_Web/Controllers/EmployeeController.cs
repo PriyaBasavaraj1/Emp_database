@@ -50,7 +50,7 @@ namespace Emp_Web.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        public HttpResponseMessage PutEmployee(Emp_db employee)
+        public HttpResponseMessage Put(Emp_db employee)
         {
             DataClasses1DataContext connection = new DataClasses1DataContext();
             Emp_db obj = (from s in connection.Emp_dbs where s.ID == employee.ID select s).FirstOrDefault();
@@ -71,7 +71,7 @@ namespace Emp_Web.Controllers
         }
 
 
-        public HttpResponseMessage DeleteProduct(string id)
+        public HttpResponseMessage Delete(string id)
         {
             employeeRepository.Remove(id);
             return new HttpResponseMessage(HttpStatusCode.NoContent);

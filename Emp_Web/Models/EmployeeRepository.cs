@@ -48,15 +48,13 @@ namespace Emp_Web.Models
                 throw new ArgumentNullException("Unable to update the details of employee");
             }
             Emp_db s = (from t in connection.Emp_dbs
-                        where t.ID == employee.ID
-                        select t).FirstOrDefault();
+                             where t.ID == employee.ID
+                             select t).FirstOrDefault();
             s.FirstName = employee.FirstName;
             s.LastName = employee.LastName;
             s.Status = employee.Status;
             connection.SubmitChanges();
             return true;
         }
-
-
     }
 }
